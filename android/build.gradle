@@ -21,11 +21,18 @@ rootProject.allprojects {
 
 apply plugin: 'com.android.library'
 
+def flutterCompiledSdkVersion = flutter.compileSdkVersion.toInteger() >= 34
+    ? flutter.compileSdkVersion
+    : 34
+def flutterTargetSdkVersion = flutter.targetSdkVersion.toInteger() >= 34
+    ? flutter.targetSdkVersion
+    : 34
+
 android {
-    compileSdkVersion 30
+    compileSdkVersion flutterCompiledSdkVersion
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 27
     }
 
     lintOptions {
